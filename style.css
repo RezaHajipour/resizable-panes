@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: bisque;
+}
+.title,
+.text {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 500px;
+    height: 250px;
+    border: 1px solid blue;
+}
+
+.wrapper .image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.wrapper .image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.wrapper .image:first-child {
+    background: url(./flower1.jpg);
+    background-size: 500px 250px;
+}
+.wrapper .image:nth-child(2) {
+    background: url(./flower2.jpg);
+    background-size: 500px 250px;
+}
+
+.slider {
+    position: absolute;
+    background-color: rgb(104, 128, 215);
+    cursor: ew-resize;
+    width: 1rem;
+    top: 0;
+    bottom: 0;
+    /* putting the slider in the corner left of the div but not 100% */
+    left: calc(100% - 1rem);
+}
