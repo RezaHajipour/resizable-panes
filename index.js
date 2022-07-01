@@ -34,7 +34,7 @@
     //--------------
 
     let isSliding = false;
-    $wrapper.on("mousemove touchstart", (e) => {
+    $wrapper.on("mousemove touchmove", (e) => {
         e.preventDefault();
         if (e.target.className === "slider") {
             return;
