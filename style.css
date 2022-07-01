@@ -55,3 +55,26 @@ body {
     /* putting the slider in the corner left of the div but not 100% */
     left: calc(100% - 1rem);
 }
+
+/* ----------------------media query---------------------- */
+
+@media only screen and (max-width: 576px) {
+    body {
+        background-color: lightblue;
+    }
+    .wrapper {
+        width: 350px;
+        height: 200px;
+    }
+    .wrapper .image:first-child {
+        background-size: 350px 200px;
+    }
+    .wrapper .image:nth-child(2) {
+        background-size: 350px 200px;
+    }
+}
+
+/* 576px for portrait phones.
+768px for tablets.
+992px for laptops.
+1200px for large devices. */
