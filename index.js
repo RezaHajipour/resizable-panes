@@ -4,6 +4,34 @@
     var $frontImage = $panes.eq(1);
     var $slider = $(".slider");
 
+    //---------for touchscreen devices--------
+    $(document).ready(function () {
+        var isTouchDevice = "ontouchstart" in document.documentElement;
+
+        $("#touchSensitive").mousedown(function (event) {
+            if (isTouchDevice == false) {
+                pushed();
+            }
+        });
+        $("#touchSensitive").mouseup(function (event) {
+            if (isTouchDevice == false) {
+                released();
+            }
+        });
+        $("#touchSensitive").on("touchstart", function () {
+            if (isTouchDevice) {
+                pushed();
+            }
+        });
+        $("#touchSensitive").on("touchend", function () {
+            if (isTouchDevice) {
+                released();
+            }
+        });
+    });
+
+    //--------------
+
     let isSliding = false;
     $wrapper.on("mousemove", (e) => {
         if (e.target.className === "slider") {
