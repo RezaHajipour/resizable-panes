@@ -35,6 +35,7 @@
 
     let isSliding = false;
     $wrapper.on("mousemove touchstart", (e) => {
+        e.preventDefault();
         if (e.target.className === "slider") {
             return;
         }
@@ -46,11 +47,13 @@
     });
 
     $wrapper.on("mouseup mouseleave touchend", (e) => {
+        e.preventDefault();
         isSliding = false;
         $wrapper.css("cursor", "default");
     });
 
     $slider.on("mousedown touchstart", (e) => {
+        e.preventDefault();
         isSliding = true;
     });
 })();
