@@ -1,27 +1,31 @@
 (function () {
-    var $wrapper = $(".wrapper");
-    const $panes = $(".image");
-    var $frontImage = $panes.eq(1);
-    var $slider = $(".slider");
+    var $pane = $(".wrapper");
+    var $frontPane = $pane.find(".image").eq(1);
+    var $slider = $pane.find(".slider");
+    var isLoading = false;
+    var offset = $pane.offset();
+    $pane.on("click", function (event) {
+        resizestuff(event);
+    });
 
-    let isSliding = false;
-    $wrapper.on("mousemove", (e) => {
-        if (e.target.className === "slider") {
+    function resizestuff(event) {
+        var xInside = event.clientX - offset.left;
+        $slider.css("left", xInside);
+        $frontPane.css("width", xInside);
+    }
+    $slider.on("touchstart", function (event) {
+        console.log("touchstart");
+        isLoading = true;
+    });
+    $pane.on("touchmove", function (event) {
+        console.log("touchmove");
+        if (!isLoading) {
             return;
         }
-        if (isSliding) {
-            $wrapper.css("cursor", "ew-resize");
-            $frontImage.css("width", e.offsetX);
-            $slider.css("left", e.offsetX - 5);
-        }
+        resizestuff(event);
     });
-
-    $wrapper.on("mouseup mouseleave", (e) => {
-        isSliding = false;
-        $wrapper.css("cursor", "default");
-    });
-
-    $slider.on("mousedown", (e) => {
-        isSliding = true;
+    $pane.on("touchend", function (event) {
+        console.log("touchend");
+        isLoading = false;
     });
 })();
