@@ -6,35 +6,34 @@
 
     //---------for touchscreen devices--------
 
-    // $(document).ready(function () {
-    //     var isTouchDevice = "ontouchstart" in document.documentElement;
-
-    //     $("#touchSensitive").mousedown(function (event) {
-    //         if (isTouchDevice == false) {
-    //             pushed();
-    //         }
-    //     });
-    //     $("#touchSensitive").mouseup(function (event) {
-    //         if (isTouchDevice == false) {
-    //             released();
-    //         }
-    //     });
-    //     $("#touchSensitive").on("touchstart", function () {
-    //         if (isTouchDevice) {
-    //             pushed();
-    //         }
-    //     });
-    //     $("#touchSensitive").on("touchend", function () {
-    //         if (isTouchDevice) {
-    //             released();
-    //         }
-    //     });
-    // });
-
     //--------------
 
+    //     let isSliding = false;
+    //     $wrapper.on("mousemove", (e) => {
+    //         if (e.target.className === "slider") {
+    //             return;
+    //         }
+    //         if (isSliding) {
+    //             $wrapper.css("cursor", "ew-resize");
+    //             $frontImage.css("width", e.offsetX);
+    //             $slider.css("left", e.offsetX - 5);
+    //         }
+    //     });
+
+    //     $wrapper.on("mouseup mouseleave ", (e) => {
+    //         e.preventDefault();
+    //         isSliding = false;
+    //         $wrapper.css("cursor", "default");
+    //     });
+
+    //     $slider.on("mousedown ", (e) => {
+    //         e.preventDefault();
+    //         isSliding = true;
+    //     });
+    // })();
+
     let isSliding = false;
-    $wrapper.on("mousemove touchmove", (e) => {
+    $wrapper.on(" touchmove", (e) => {
         e.preventDefault();
         if (e.target.className === "slider") {
             return;
@@ -46,13 +45,13 @@
         }
     });
 
-    $wrapper.on("mouseup mouseleave touchend", (e) => {
+    $wrapper.on(" touchend", (e) => {
         e.preventDefault();
         isSliding = false;
         $wrapper.css("cursor", "default");
     });
 
-    $slider.on("mousedown touchstart", (e) => {
+    $slider.on(" touchstart", (e) => {
         e.preventDefault();
         isSliding = true;
     });
