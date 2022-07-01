@@ -5,35 +5,36 @@
     var $slider = $(".slider");
 
     //---------for touchscreen devices--------
-    $(document).ready(function () {
-        var isTouchDevice = "ontouchstart" in document.documentElement;
 
-        $("#touchSensitive").mousedown(function (event) {
-            if (isTouchDevice == false) {
-                pushed();
-            }
-        });
-        $("#touchSensitive").mouseup(function (event) {
-            if (isTouchDevice == false) {
-                released();
-            }
-        });
-        $("#touchSensitive").on("touchstart", function () {
-            if (isTouchDevice) {
-                pushed();
-            }
-        });
-        $("#touchSensitive").on("touchend", function () {
-            if (isTouchDevice) {
-                released();
-            }
-        });
-    });
+    // $(document).ready(function () {
+    //     var isTouchDevice = "ontouchstart" in document.documentElement;
+
+    //     $("#touchSensitive").mousedown(function (event) {
+    //         if (isTouchDevice == false) {
+    //             pushed();
+    //         }
+    //     });
+    //     $("#touchSensitive").mouseup(function (event) {
+    //         if (isTouchDevice == false) {
+    //             released();
+    //         }
+    //     });
+    //     $("#touchSensitive").on("touchstart", function () {
+    //         if (isTouchDevice) {
+    //             pushed();
+    //         }
+    //     });
+    //     $("#touchSensitive").on("touchend", function () {
+    //         if (isTouchDevice) {
+    //             released();
+    //         }
+    //     });
+    // });
 
     //--------------
 
     let isSliding = false;
-    $wrapper.on("mousemove", (e) => {
+    $wrapper.on("mousemove touchstart", (e) => {
         if (e.target.className === "slider") {
             return;
         }
@@ -44,12 +45,12 @@
         }
     });
 
-    $wrapper.on("mouseup mouseleave", (e) => {
+    $wrapper.on("mouseup mouseleave touchend", (e) => {
         isSliding = false;
         $wrapper.css("cursor", "default");
     });
 
-    $slider.on("mousedown", (e) => {
+    $slider.on("mousedown touchstart", (e) => {
         isSliding = true;
     });
 })();
