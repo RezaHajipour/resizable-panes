@@ -31,28 +31,8 @@
     //         isSliding = true;
     //     });
     // })();
-
-    let isSliding = false;
-    $wrapper.on(" touchmove", (e) => {
-        e.preventDefault();
-        if (e.target.className === "slider") {
-            return;
-        }
-        if (isSliding) {
-            $wrapper.css("cursor", "ew-resize");
-            $frontImage.css("width", e.offsetX);
-            $slider.css("left", e.offsetX - 5);
-        }
-    });
-
-    $wrapper.on(" touchend", (e) => {
-        e.preventDefault();
-        isSliding = false;
-        $wrapper.css("cursor", "default");
-    });
-
-    $slider.on(" touchstart", (e) => {
-        e.preventDefault();
-        isSliding = true;
-    });
+    document.querySelector(".wrapper").addEventListener("touchstart", func);
+    function func(e) {
+        console.log(e.touches, e.type);
+    }
 })();
